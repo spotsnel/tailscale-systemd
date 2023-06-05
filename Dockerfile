@@ -26,6 +26,7 @@ RUN apt-get update \
         curl \
     && apt -y autoremove \
     && rm -rf /var/lib/apt/lists/* \
+    && sed -i 's/FLAGS=""/FLAGS="--tun=userspace-networking"/g' /etc/default/tailscaled \
     && systemctl enable tailscaled
 
 ENTRYPOINT ["/sbin/init"]
