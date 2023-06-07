@@ -7,11 +7,29 @@ System(d) container for use with Podman Machine, MicroShift, OpenShift Local and
 
 
 ### Usage
-Start the system container:
+
+#### Container creation
+Start the system container. You can choose between the following options: [Debian](./#debian-based) or [RHEL UBI9](./#rhel-ubi9-based)
+
+##### Debian-based
 ```
-$ podman run -d --name=tailscale --hostname $HOSTNAME-tailscale --network=host --systemd=always --cap-add=NET_ADMIN --cap-add=NET_RAW --device=/dev/net/tun ghcr.io/spotsnel/tailscale-systemd:latest
+$ podman run -d --name=tailscale \
+        --hostname $HOSTNAME-tailscale \
+        --network=host --systemd=always \
+        --cap-add=NET_ADMIN --cap-add=NET_RAW \
+        ghcr.io/spotsnel/tailscale-systemd:latest
 ```
 
+##### RHEL UBI9-based
+```
+$ podman run -d --name=tailscale \
+        --hostname $HOSTNAME-tailscale \
+        --network=host --systemd=always \
+        --cap-add=NET_ADMIN --cap-add=NET_RAW \
+        ghcr.io/spotsnel/tailscale-systemd/ubi9:latest
+```
+
+#### Node registration
 and register the node to your Tailnet
 ```
 $ podman exec -it tailscale tailscale up
