@@ -49,3 +49,12 @@ To authenticate, visit:
 ```
 
 or use the Podman Desktop terminal to do so.
+
+#### Systemd
+The lifecycle of the container can be maintained by the host using a systemd service unit:
+
+```
+$ (cd $HOME/.config/systemd/user && podman generate systemd --name --files tailscale)
+$ systemctl --user enable --now container-tailscale
+$ loginctl enable-linger $USER
+```
