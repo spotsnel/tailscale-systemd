@@ -1,5 +1,9 @@
 FROM registry.access.redhat.com/ubi9/ubi-init:latest
 
+LABEL org.opencontainers.image.title="Tailscale (systemd)" \
+      org.opencontainers.image.description="Tailscale lets you securely connect to your containers without exposing them to the public internet." \
+      org.opencontainers.image.authors="Gerard Braad"
+
 # install tailscale
 RUN dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/9/tailscale.repo \
     && dnf install -y \
