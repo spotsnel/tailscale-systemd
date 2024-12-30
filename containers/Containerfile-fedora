@@ -16,4 +16,5 @@ RUN dnf install -y \
     && sed -i 's/FLAGS=""/FLAGS="--tun=userspace-networking"/g' /etc/default/tailscaled \
     && systemctl enable tailscaled
 
+USER root
 ENTRYPOINT ["/sbin/init"]
