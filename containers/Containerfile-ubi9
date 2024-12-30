@@ -13,5 +13,7 @@ RUN dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/9/tails
     && sed -i 's/FLAGS=""/FLAGS="--tun=userspace-networking"/g' /etc/default/tailscaled \
     && systemctl enable tailscaled
 
+# systemd
+USER root
 # No need for entrypoint as base sets this
 #ENTRYPOINT ["/sbin/init"]

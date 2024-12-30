@@ -29,4 +29,6 @@ RUN apt-get update \
     && sed -i 's/FLAGS=""/FLAGS="--tun=userspace-networking"/g' /etc/default/tailscaled \
     && systemctl enable tailscaled
 
+# systemd
+USER root
 ENTRYPOINT ["/sbin/init"]
